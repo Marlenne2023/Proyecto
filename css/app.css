@@ -1,0 +1,23 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url("https://blogger.googleusercontent.com/img/a/AVvXsEiTjHEYbgYZiBVDXcebKqZWamFVDND77Wq49l-nUtcNkR2Phc5kRMjwuaDebJFWTji-uUyh1A8THWFOQlbFvYp1ehoThIJvLstOubvY6Rs7O8yNN4NCLhnMYnUHCnSoSxvxfhx_FFDfGSPPDifDg1QTcPmcFv-c4s0ImUnL44vqSLrfKI3FVi6nZ0MQ_0bo");
+  background-size: cover;
+  background-position: center center;
+}
+
+.btn-primary {
+    background-color: #BC955B !important;
+    
+}
+

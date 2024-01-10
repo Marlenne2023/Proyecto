@@ -1,0 +1,47 @@
+    .no-selection {
+        user-select: none;
+    }
+
+    .iconosDIF {
+        display: flex;
+        align-items: center;
+    }
+
+    .iconosDIF a {
+        display: flex;
+        align-items: center;
+    }
+
+    .iconosDIF i {
+        margin-right: 5px;
+        /* Ajusta este valor según sea necesario */
+    }
+
+    .espaciadoBotones {
+        margin-right: 8px;
+    }
+
+    .password-container {
+        width: 100%;
+        position: relative;
+    }
+
+    .password-container input[type="password"],
+    .password-container input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .fa-eye {
+        position: absolute;
+        top: 28%;
+        right: 4%;
+        cursor: pointer;
+        color: black;
+        opacity: 70%;
+    }
+
+    .cardRoja {
+        background-color: #9c223c;
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2), 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+    }
