@@ -10,6 +10,13 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
 //var_dump($registros);
 
 ?>
+<!doctype html>
+<html lang="es">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="css/stylesimprimir.css" media="print">
+
+</head>
 
 <div class="card-header">
   <div class="row">
@@ -17,10 +24,13 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
       <h3 class="card-title">Usuarios registrados</h3>
     </div>
     <div class="col-md-3">
-      <a href="crear_usuario.php" class="btn btn-primary btn-xl pull-right w-100"><i class="fa fa-plus"></i> Nuevo usuario</a>
+      <a href="lista_usuarios.php" class="btn btn-dark boton-imprimir"></i> Regresar</a>
     </div>
     <div class="col-md-3">
-      <a href="imprimir.php" class="btn btn-success btn-xl pull-right w-100" ></i> Generar reporte</a>
+      <a href="imprimir.php" class="btn btn-success boton-imprimir" onclick="window.print()"> Imprimir</a>
+    </div>
+    <div>
+      <a href="GenerarExcel.php" class="btn btn-warning" >Generar excel</a>
     </div>
   </div>
 </div>
@@ -30,7 +40,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
     <thead>
       <tr>
         <th>Id</th>
-        <th>Email</th>
+
         <th>Nombre</th>
         <th>Teléfono</th>
       </tr>
@@ -39,7 +49,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
       <?php foreach ($usuarios as $fila) : ?>
         <tr>
           <td><?php echo $fila->id; ?></td>
-          <td><?php echo $fila->email; ?></td>
+
           <td><?php echo $fila->nombre; ?></td>
           <td><?php echo $fila->telefono; ?></td>
         </tr>
@@ -75,3 +85,5 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
 
   });
 </script>
+
+</html>

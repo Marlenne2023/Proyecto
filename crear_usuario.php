@@ -68,7 +68,7 @@ if(isset($_POST["crearUsuario"])){
               <div class="card-header">               
                 <div class="row">
                   <div class="col-md-9">
-                    <h3 class="card-title">Crear un nuevo usuario</h3>
+                    <h3 class="card-title">Agregar nuevo usuario</h3>
                   </div>                 
               </div>
               </div>
