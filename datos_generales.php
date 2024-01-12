@@ -233,6 +233,8 @@
           <button type="submit" name="registrarDatos" class="btn btn-primary"><i class="fas fa-cog"></i> Guardar
             Registro</button>
 
+            
+
         </div>
       </form>
     </div>
@@ -282,5 +284,4 @@
         format: 'L'
     });
 </script>
-
 <?php include "includes/footer.php" ?>

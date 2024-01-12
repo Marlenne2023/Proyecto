@@ -2,52 +2,44 @@
 <?php
   //Validar si recibimos el id, se envía por GET
   if (isset($_GET["id"])) {
-    $idNota = $_GET['id'];
+    $id= $_GET['id'];
   }
 
   //Obtener los datos de la nota por su id
-  $query = "SELECT * FROM notas WHERE idnota=:id";
+  $query = "SELECT * FROM dependientes WHERE id=:id";
   $stmt = $conn->prepare($query);
 
   //Debemos pasar a bindParam las variables, no podemos pasar el dato directamente
-  //Llamado por referencia
-  $stmt->bindParam(":id", $idNota, PDO::PARAM_INT);
+  // sino que hacemos llamado por referencia
+  $stmt->bindParam(":id", $id, PDO::PARAM_INT);
   $stmt->execute();
 
-  $nota = $stmt->fetch(PDO::FETCH_OBJ);
+  $registro = $stmt->fetch(PDO::FETCH_OBJ);
 
-  //Actualización de la nota
-  if(isset($_POST["editarNota"])){
+  //eliminacion de la nota
+  if(isset($_POST["borrar_dependiente"])){
 
-    //Obtener valores
-    $titulo = $_POST["titulo"];
-    $descripcion = $_POST["descripcion"];
 
-    //Validar si está vacío
-    if (empty($titulo) || empty($descripcion)) {
-      $error = "Error, algunos campos obligatorios están vacíos";      
-    }else{
-      //Si entra por aqui es porque se puede ingresar el nuevo registro
-      $query = "UPDATE notas SET titulo=:titulo, descripcion=:descripcion WHERE idnota=:idnota";     
+      //Cambiamos la consulta a una eliminación
+      $query = "DELETE dependientes  WHERE id=:id";
 
-      $stmt = $conn->prepare($query);
+    //   preparar y ejecutar la consulta
+      $stmt = $conn->prepare($query); 
 
-      $stmt->bindParam(":titulo", $titulo, PDO::PARAM_STR);
-      $stmt->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);      
-      $stmt->bindParam(":idnota", $idNota, PDO::PARAM_INT);
+      $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
       $resultado = $stmt->execute();
 
       if ($resultado) {
-        $mensaje = "Registro de nota editado correctamente";
+        $mensaje = "Dependiente eliminado correctamente";
       }else{
-        $error = "Error, no se pudo editar la nota";  
+        $error = "Error, no se pudo eliminar al dependiente";  
       }
     }
-  }
 
 ?>
 
+<!-- Mensaje de registro -->
 <div class="row">
     <div class="col-sm-12">
             <?php if(isset($mensaje)) : ?>
@@ -61,6 +53,7 @@
     </div>
 </div>
 
+<!-- Mensaje de error -->
 <div class="row">
     <div class="col-sm-12">
             <?php if(isset($error)) : ?>
@@ -79,7 +72,7 @@
               <div class="card-header">               
                 <div class="row">
                   <div class="col-md-9">
-                    <h3 class="card-title">Editar una nota</h3>
+                    <h3 class="card-title">Agregar nuevo dependiente economico</h3>
                   </div>                 
               </div>
               </div>
@@ -90,17 +83,29 @@
                   <form role="form" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">            
 
                       <div class="mb-3">
-                        <label for="titulo" class="form-label">Título:</label>
-                        <input type="text" name="titulo" class="form-control" value="<?php if($nota) echo $nota->titulo; ?>">
+                        <label for="titulo" class="form-label">Nombre</label>
+                        <!-- cargamos el select -->
+                        <input type="text" name="nombre" class="form-control" value="<?php if($registro) echo $registro->nombre; ?>" readonly>
                       </div>
 
                       <div class="mb-3">
-                        <label for="descripcion" class="form-label">Descripción:</label>
-                        <textarea class="form-control" name="descripcion" rows="3"><?php if($nota) echo $nota->descripcion; ?>
-                        </textarea>
-                      </div>        
+                        <label for="descripcion" class="form-label">Apellido paterno</label>
+                        <input class="form-control" name="apellido_paterno" value="<?php if($registro) echo $registro->apellido_paterno; ?>" readonly>
+                      </div>  
+                      <div class="mb-3">
+                        <label for="descripcion" class="form-label">Apellido materno</label>
+                        <input class="form-control" name="apellido_materno" value="<?php if($registro) echo $registro->apellido_materno; ?>" readonly>
+                      </div>
+                      <div class="mb-3">
+                        <label for="titulo" class="form-label">Parentesco</label>
+                        <input type="text" name="parentezco" class="form-control" value="<?php if($registro) echo $registro->parentezco; ?>" readonly>
+                      </div>   
+                      <div class="mb-3">
+                        <label for="titulo" class="form-label">Teléfono</label>
+                        <input type="text" name="telefono" class="form-control" value="<?php if($registro) echo $registro->telefono; ?>" readonly>
+                      </div>    
 
-                            <button type="submit" name="editarNota" class="btn btn-primary"><i class="fas fa-cog"></i> Editar Nota</button>  
+                            <button type="submit" name="borrar_dependiente" class="btn btn-primary btn-danger"> Eliminar dependiente</button>  
 
                         </div>
                       </form>

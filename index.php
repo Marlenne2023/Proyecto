@@ -118,7 +118,7 @@ if (isset($_POST["ingresar"])) {
         <div class="login d-flex align-items-center py-5">
 
           <!-- Demo content-->
-          <div class="card"  style="width: 500px; height: 350px; ">
+          <div class="card"  style="width: 350px; height: 400px; ">
             <div class="container" >
               <div class="row">
                 <div class="col-lg-10 col-xl-7 mx-auto">

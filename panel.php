@@ -1,15 +1,15 @@
 <?php include "includes/header.php" ?>
 
-<?php
+<?php  
 
-$query = "SELECT * FROM datosG WHERE usuario_id='$idUsuario'";
+ $query = "SELECT * FROM datosG WHERE usuario_id='$idUsuario'";
+ 
+ $stmt = $conn->query($query);
+ 
+  $registros = $stmt->fetchAll(PDO::FETCH_OBJ);
 
-$stmt = $conn->query($query);
-
-$registros = $stmt->fetchAll(PDO::FETCH_OBJ);
-
-foreach ($registros as $fila) :
-endforeach;
+  foreach($registros as $fila) : 
+  endforeach;
 
 ?>
 
@@ -45,7 +45,7 @@ endforeach;
 
 <div class="row">
   <div class="col-sm-12">
-    <?php if (isset($mensaje)) : ?>
+    <?php if (isset($mensaje)): ?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>
           <?php echo $mensaje; ?>
@@ -60,7 +60,7 @@ endforeach;
 
 <div class="row">
   <div class="col-sm-12">
-    <?php if (isset($error)) : ?>
+    <?php if (isset($error)): ?>
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>
           <?php echo $error; ?>
@@ -81,10 +81,10 @@ endforeach;
       <h3 class="card-title">Datos Generales</h3>
     </div>
     <div class="col-md-3">
-      <a href="datos_generales.php" type="button" class="btn btn-primary btn-xl pull-right w-100">
-        <i class="fa fa-plus"></i> Ingresa tus datos
-      </a>
-    </div>
+                    <a href="datos_generales.php" type="button" class="btn btn-primary btn-xl pull-right w-100">
+                      <i class="fa fa-plus"></i> Ingresa tus datos
+                    </a>
+                 </div>
   </div>
 </div>
 <!-- /.card-header -->
@@ -95,152 +95,108 @@ endforeach;
 
         <div class="picture-container">
           <div class="picture">
-            <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" />
-            <input type="file" id="wizard-picture">
+            <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+              <input type="file" id="wizard-picture">
           </div>
-          <h6>Choose Picture</h6>
-        </div>
+            <h6>Choose Picture</h6>
+          </div>
 
         <div class="mb-3">
           <label for="nombres" class="form-label">Nombres:</label>
           <input type="text" name="nombres" class="form-control" value="<?php if (empty($fila)) {
-                                                                          echo "";
-                                                                        } else {
-                                                                          echo $fila->Nombres;
-                                                                        } ?>" /disabled>
+          echo "";} else{ echo $fila->Nombres;} ?>" /disabled>
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Apellido Paterno:</label>
-          <input type="text" name="apellidoP" class="form-control" value="<?php if (empty($fila)) {
-                                                                            echo "";
-                                                                          } else {
-                                                                            echo $fila->Apellido_P;
-                                                                          } ?>" /disabled>
+          <input type="text" name="apellidoP" class="form-control"value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->Apellido_P;} ?>" /disabled>
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Apellido Materno:</label>
-          <input type="text" name="apellidoM" class="form-control" value="<?php if (empty($fila)) {
-                                                                            echo "";
-                                                                          } else {
-                                                                            echo $fila->Apellido_M;
-                                                                          } ?>" /disabled>
+          <input type="text" name="apellidoM" class="form-control"value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->Apellido_M;} ?>" /disabled>
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Numero de Expediente:</label>
-          <input type="text" name="numExp" class="form-control" value="<?php if (empty($fila)) {
-                                                                          echo "";
-                                                                        } else {
-                                                                          echo $fila->NumeroExpediente;
-                                                                        } ?>" /disabled>
+          <input type="text" name="numExp" class="form-control"value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->NumeroExpediente;} ?>" /disabled>
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Puesto:</label>
-          <input type="text" name="puesto" class="form-control" value="<?php if (empty($fila)) {
-                                                                          echo "";
-                                                                        } else {
-                                                                          echo $fila->Puesto;
-                                                                        } ?>" /disabled>
+          <input type="text" name="puesto" class="form-control"value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->Puesto;} ?>" /disabled>
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Tipo de Contrato:</label>
           <input type="text" name="tipoC" class="form-control" value="<?php if (empty($fila)) {
-                                                                        echo "";
-                                                                      } else {
-                                                                        echo $fila->TipoContrato;
-                                                                      } ?>" /disabled>
+          echo "";} else{ echo $fila->TipoContrato;} ?>" /disabled>
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Fecha de Nacimiento:</label>
           <input type="text" name="tipoC" class="form-control" value="<?php if (empty($fila)) {
-                                                                        echo "";
-                                                                      } else {
-                                                                        echo $fila->FechaNacimiento;
-                                                                      } ?>" /disabled>
+          echo "";} else{ echo $fila->FechaNacimiento;} ?>" /disabled>
         </div>
-
+        
         <div class="mb-3">
           <label for="titulo" class="form-label">Nacionalidad:</label>
           <input type="text" name="tipoC" class="form-control" value="<?php if (empty($fila)) {
-                                                                        echo "";
-                                                                      } else {
-                                                                        echo $fila->Nacionalidad;
-                                                                      } ?>" /disabled>
+          echo "";} else{ echo $fila->Nacionalidad;} ?>" /disabled>
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Sexo:</label>
           <input type="text" name="tipoC" class="form-control" value="<?php if (empty($fila)) {
-                                                                        echo "";
-                                                                      } else {
-                                                                        echo $fila->Sexo;
-                                                                      } ?>" /disabled>
+          echo "";} else{ echo $fila->Sexo;} ?>" /disabled>
         </div>
 
-        <div class="mb-3">
-          <label for="titulo" class="form-label">CURP:</label>
-          <input type="text" name="curp" class="form-control" value="<?php if (empty($fila)) {
-                                                                        echo "";
-                                                                      } else {
-                                                                        echo $fila->CURP;
-                                                                      } ?>" /disabled>
+          <div class="mb-3">
+            <label for="titulo" class="form-label">CURP:</label>
+            <input type="text" name="curp" class="form-control" value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->CURP;} ?>" /disabled>
+          </div>
+
+          <div class="mb-3">
+            <label for="titulo" class="form-label">NSS:</label>
+            <input type="text" name="nss" class="form-control" value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->NSS;} ?>" /disabled>
+          </div>
+
+          <div class="mb-3">
+            <label for="titulo" class="form-label">RFC:</label>
+            <input type="text" name="rfc" class="form-control" value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->RFC;} ?>" /disabled>
+          </div>
+
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Homoclave RFC:</label>
+            <input type="text" name="H_rfc" class="form-control" value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->HomoclaveRFCF;} ?>" /disabled>
+          </div>
+
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Telefono celular*:</label>
+            <input type="text" name="tel" class="form-control" value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->Telefono;} ?>" /disabled>
+          </div>
+
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Correo institucional*:</label>
+            <input type="text" name="correo" class="form-control" value="<?php if (empty($fila)) {
+          echo "";} else{ echo $fila->Correo_Inst;} ?>" /disabled>
+          </div>
+
+          <?php include "includes/footer.php" ?>
+
         </div>
-
-        <div class="mb-3">
-          <label for="titulo" class="form-label">NSS:</label>
-          <input type="text" name="nss" class="form-control" value="<?php if (empty($fila)) {
-                                                                      echo "";
-                                                                    } else {
-                                                                      echo $fila->NSS;
-                                                                    } ?>" /disabled>
-        </div>
-
-        <div class="mb-3">
-          <label for="titulo" class="form-label">RFC:</label>
-          <input type="text" name="rfc" class="form-control" value="<?php if (empty($fila)) {
-                                                                      echo "";
-                                                                    } else {
-                                                                      echo $fila->RFC;
-                                                                    } ?>" /disabled>
-        </div>
-
-        <div class="mb-3">
-          <label for="titulo" class="form-label">Homoclave RFC:</label>
-          <input type="text" name="H_rfc" class="form-control" value="<?php if (empty($fila)) {
-                                                                        echo "";
-                                                                      } else {
-                                                                        echo $fila->HomoclaveRFCF;
-                                                                      } ?>" /disabled>
-        </div>
-
-        <div class="mb-3">
-          <label for="titulo" class="form-label">Telefono celular*:</label>
-          <input type="text" name="tel" class="form-control" value="<?php if (empty($fila)) {
-                                                                      echo "";
-                                                                    } else {
-                                                                      echo $fila->Telefono;
-                                                                    } ?>" /disabled>
-        </div>
-
-        <div class="mb-3">
-          <label for="titulo" class="form-label">Correo institucional*:</label>
-          <input type="text" name="correo" class="form-control" value="<?php if (empty($fila)) {
-                                                                          echo "";
-                                                                        } else {
-                                                                          echo $fila->Correo_Inst;
-                                                                        } ?>" /disabled>
-        </div>
-
-
+      </form>
     </div>
-    </form>
   </div>
-</div>
 </div>
 <!-- /.card-body -->
 <!-- jQuery -->
@@ -271,18 +227,3 @@ endforeach;
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
-  $(function() {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-          theme: 'bootstrap4'
-        })
-
-        //Date picker
-        $('#reservationdate').datetimepicker({
-          format: 'L'
-        });
-</script>

@@ -4,7 +4,7 @@
     $dbuser = "sa";
     $userpass = "123456";
 
-    $dsn = "sqlsrv:Server=PCDIFHGO345;Database=notas_php"; $dbuser; $userpass;
+    $dsn = "sqlsrv:Server=AGUILAR;Database=notas_php"; $dbuser; $userpass;
 
     try {
         //crear conexión a sql server

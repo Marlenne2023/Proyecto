@@ -19,10 +19,8 @@
 
 ?>
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
+
+
 <html lang="es">
 <head>
   <meta charset="utf-8">
@@ -105,11 +103,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="lista_notas.php" class="nav-link">
-              <i class="nav-icon fas fa-user-cog"></i>
+            <a href="dependientes.php" class="nav-link" style="color: #fff">
+              <i class="nav-icon fas fa-user"></i>
               <p>
-                Lista de Notas     
+                Dependientes        
               </p>
             </a>
           </li>
