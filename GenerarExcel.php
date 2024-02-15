@@ -9,11 +9,11 @@ header("Content-Disposition: attachment; filename = usuarios_registrados.xls"); 
 <?php
 
 //Mostrar registros
-$query = "SELECT * FROM usuario";
-$stmt = $conn->query($query);
-$usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
+$query = "SELECT * FROM usuario"; //Consulta
+$stmt = $conn->query($query); //ejecuta la consulta
+$usuarios = $stmt->fetchAll(PDO::FETCH_OBJ); //Extrae los datos de la consulta
 
-//var_dump($registros);
+
 
 ?>
 <!doctype html>
@@ -41,6 +41,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
                 </tr>
             </thead>
             <tbody>
+
+            <!-- //Ciclo para imprimir los datos -->
                 <?php foreach ($usuarios as $fila) : ?> 
                     <tr>
                         <td><?php echo $fila->id; ?></td>
@@ -52,7 +54,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
         </table>
     </div>
 
-    <script>
+    <script> //Hacer responsivo
         $(function() {
             $('#tblUsuarios').DataTable({
                 "paging": true,
@@ -66,7 +68,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
 
 
 
-            //Timepicker
+            //Captura tiempo para acciones
             $('#timepicker').datetimepicker({
                 format: 'HH:mm',
                 enabledHours: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],

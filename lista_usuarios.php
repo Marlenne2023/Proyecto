@@ -20,7 +20,13 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
       <a href="crear_usuario.php" class="btn btn-primary btn-xl pull-right w-100"><i class="fa fa-plus"></i> Nuevo usuario</a>
     </div>
     <div class="col-md-3">
-      <a href="imprimir.php" class="btn btn-success btn-xl pull-right w-100" ></i> Generar reporte</a>
+      <a href="imprimir.php" class="btn btn-success btn-xl pull-right w-100" ><i class="far fa-file"></i> Generar reporte</a>
+    </div>
+    <div class="col-md-3">
+      <a href="pdf.php" class="btn btn-success btn-xl pull-right w-100" ><i class="far fa-file"></i> PDF General</a>
+    </div>
+    <div class="col-md-3">
+      <a href="pdf_elegir.php" class="btn btn-success btn-xl pull-right w-100" ><i class="far fa-file"></i> PDF personalizado</a>
     </div>
   </div>
 </div>
@@ -42,6 +48,9 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ);
           <td><?php echo $fila->email; ?></td>
           <td><?php echo $fila->nombre; ?></td>
           <td><?php echo $fila->telefono; ?></td>
+          <td>
+            <a href="pdf.php?id=<?php echo $fila->id; ?>" class="btn btn-danger"><i class="bi bi-pencil-fill"></i> <i class="fas fa-edit"></i> PDF</a>
+          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
