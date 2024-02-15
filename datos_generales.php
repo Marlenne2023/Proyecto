@@ -2,67 +2,81 @@
 
 <?php
 
-  if(isset($_POST["registrarDatos"])){
+if (isset($_POST["registrarDatos"])) {
 
-    //Obtener valores
-    $nombres = $_POST["nombres"];
-    $apellidoP = $_POST["apellidoP"];
-    $apellidoM = $_POST["apellidoM"];
-    $numExp = $_POST["numExp"];
-    $puesto = $_POST["puesto"];
-    $tipoC = $_POST["tipoC"];
-    $fechNac = $_POST["fechNac"];
-    $nacionalidad = $_POST["nacionalidad"];
-    $sexo = $_POST["sexo"];
-    $curp = $_POST["curp"];
-    $nss= $_POST["nss"];
-    $rfc = $_POST["rfc"];
-    $H_rfc = $_POST["H_rfc"];
-    $tel = $_POST["tel"];
-    $correo = $_POST["correo"];
+  //Obtener valores
+  $nombre = $_POST["nombreF"];
+  $apellido_p = $_POST["apellido_pF"];
+  $apellido_m = $_POST["apellido_mF"];
+  $num_exp = $_POST["num_expF"];
+  $puesto = $_POST["puestoF"];
+  $fecha_nacimiento = $_POST["fecha_nacimientoF"];
+  $sexo = $_POST["sexoF"];
+  $tipo_contrato = $_POST["tipo_contratoF"];
+  $nacionalidad = $_POST["nacionalidadF"];
+  $curp = $_POST["curpF"];
+  $nss = $_POST["nssF"];
+  $rfc = $_POST["rfcF"];
+  $homoclave = $_POST["homoclaveF"];
+  $telefono = $_POST["telefonoF"];
+  $correo_inst = $_POST["correo_instF"];
+  $cedula_prof = $_POST["cedula_profF"];
+  $cartilla_militar = $_POST["cartilla_militarF"];
+  $pasaporte = $_POST["pasaporteF"];
+  $licencia_manejo = $_POST["licencia_manejoF"];
+  $estado_civil = $_POST["estado_civilF"];
+  $tel_casa = $_POST["tel_casaF"];
+  $correo_per = $_POST["correo_perF"];
 
-    //Validar si está vacío
-    if (empty($nombres)) {
-      $error = "Error, algunos campos obligatorios están vacíos";      
-    }else{
-      //Si entra por aqui es porque se puede ingresar el nuevo registro
-     // $query = "INSERT INTO notas(titulo, descripcion, fecha, usuario_id)VALUES(:titulo, :descripcion, :fecha, :usuario_id)";
-      $query = "INSERT INTO datosG (Nombres, Apellido_P, Apellido_M, NumeroExpediente, Puesto, TipoContrato ,FechaNacimiento, Nacionalidad, Sexo, CURP, NSS ,
-      RFC,HomoclaveRFCF,Telefono,Correo_Inst,usuario_id ) vALUES
-      (:nombres,:apellidoP, :apellidoM, :numExp, :puesto, :tipoC, :fechNac,:nacionalidad, :sexo,:curp,:nss,:rfc,:H_rfc,
-      :tel,:correo, :usuario_id);";
+  //Validar si está vacío
+  if (empty($nombre)) {
+    $error = "Error, algunos campos obligatorios están vacíos";
+  } else {
+    $query = "INSERT INTO datosG (nombre, apellido_p, apellido_m, num_exp, puesto, fecha_nacimiento, sexo, tipo_contrato, nacionalidad, 
+      curp, nss, rfc, homoclave, telefono, correo_inst, cedula_profesional, cartilla_militar, pasaporte, licencia_manejo, estado_civil, 
+      tel_casa, correo_per, usuario_id)
+      VALUES (:nombre, :apellido_p, :apellido_m, :num_exp, :puesto, :fecha_nacimiento, :sexo, :tipo_contrato, :nacionalidad, :curp, :nss, :rfc, 
+      :homoclave, :telefono, :correo_inst, :cedula_profesional, :cartilla_militar, :pasaporte, :licencia_manejo, :estado_civil, :tel_casa, 
+      :correo_per, :usuario_id);";
 
 
-      //$fechaActual = date('Y-m-d');
+    //$fechaActual = date('Y-m-d');
 
-      $stmt = $conn->prepare($query);
+    $stmt = $conn->prepare($query);
 
-      $stmt->bindParam(":nombres", $nombres, PDO::PARAM_STR);
-      $stmt->bindParam(":apellidoP", $apellidoP, PDO::PARAM_STR);
-      $stmt->bindParam(":apellidoM", $apellidoM, PDO::PARAM_STR);
-      $stmt->bindParam(":numExp", $numExp, PDO::PARAM_INT);
-      $stmt->bindParam(":puesto", $puesto, PDO::PARAM_INT);
-      $stmt->bindParam(":tipoC", $tipoC, PDO::PARAM_INT);
-      $stmt->bindParam(":fechNac", $fechNac, PDO::PARAM_INT);
-      $stmt->bindParam(":nacionalidad", $nacionalidad, PDO::PARAM_INT);
-      $stmt->bindParam(":sexo", $sexo, PDO::PARAM_INT);
-      $stmt->bindParam(":curp", $curp, PDO::PARAM_INT);
-      $stmt->bindParam(":nss", $nss, PDO::PARAM_INT);
-      $stmt->bindParam(":rfc", $rfc, PDO::PARAM_INT);
-      $stmt->bindParam(":H_rfc", $H_rfc, PDO::PARAM_INT);
-      $stmt->bindParam(":tel", $tel, PDO::PARAM_INT);
-      $stmt->bindParam(":correo", $correo, PDO::PARAM_INT);
-      $stmt->bindParam(":usuario_id", $idUsuario, PDO::PARAM_INT);
+    $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+    $stmt->bindParam(":apellido_p", $apellido_p, PDO::PARAM_STR);
+    $stmt->bindParam(":apellido_m", $apellido_m, PDO::PARAM_STR);
+    $stmt->bindParam(":num_exp", $num_exp, PDO::PARAM_STR);
+    $stmt->bindParam(":puesto", $puesto, PDO::PARAM_STR);
+    $stmt->bindParam(":fecha_nacimiento", $fecha_nacimiento, PDO::PARAM_STR);
+    $stmt->bindParam(":sexo", $sexo, PDO::PARAM_STR);
+    $stmt->bindParam(":tipo_contrato", $tipo_contrato, PDO::PARAM_STR);
+    $stmt->bindParam(":nacionalidad", $nacionalidad, PDO::PARAM_STR);
+    $stmt->bindParam(":curp", $curp, PDO::PARAM_STR);
+    $stmt->bindParam(":nss", $nss, PDO::PARAM_STR);
+    $stmt->bindParam(":rfc", $rfc, PDO::PARAM_STR);
+    $stmt->bindParam(":homoclave", $homoclave, PDO::PARAM_STR);
+    $stmt->bindParam(":telefono", $telefono, PDO::PARAM_STR);
+    $stmt->bindParam(":correo_inst", $correo_inst, PDO::PARAM_STR);
+    $stmt->bindParam(":cedula_profesional", $cedula_prof, PDO::PARAM_STR);
+    $stmt->bindParam(":cartilla_militar", $cartilla_militar, PDO::PARAM_STR);
+    $stmt->bindParam(":pasaporte", $pasaporte, PDO::PARAM_STR);
+    $stmt->bindParam(":licencia_manejo", $licencia_manejo, PDO::PARAM_STR);
+    $stmt->bindParam(":estado_civil", $estado_civil, PDO::PARAM_STR);
+    $stmt->bindParam(":tel_casa", $tel_casa, PDO::PARAM_STR);
+    $stmt->bindParam(":correo_per", $correo_per, PDO::PARAM_STR);
+    $stmt->bindParam(":usuario_id", $idUsuario, PDO::PARAM_INT);
 
-      $resultado = $stmt->execute();
+    $resultado = $stmt->execute();
 
-      if ($resultado) {
-        $mensaje = "Registro de nota creado correctamente";
-      }else{
-        $error = "Error, no se pudo crear la nota";  
-      }
+    if ($resultado) {
+      $mensaje = "Registro de nota creado correctamente";
+    } else {
+      $error = "Error, no se pudo crear la nota";
     }
   }
+}
 
 ?>
 
@@ -98,7 +112,7 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <?php if (isset($mensaje)): ?>
+    <?php if (isset($mensaje)) : ?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>
           <?php echo $mensaje; ?>
@@ -113,7 +127,7 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <?php if (isset($error)): ?>
+    <?php if (isset($error)) : ?>
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>
           <?php echo $error; ?>
@@ -142,103 +156,149 @@
       <form role="form" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
 
         <div class="mb-3">
-          <label for="titulo" class="form-label">Nombres:</label>
-          <input type="text" name="nombres" class="form-control">
+          <label for="titulo" class="form-label">Nombre:</label>
+          <input type="text" name="nombreF" class="form-control">
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Apellido Paterno:</label>
-          <input type="text" name="apellidoP" class="form-control">
+          <input type="text" name="apellido_pF" class="form-control">
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Apellido Materno:</label>
-          <input type="text" name="apellidoM" class="form-control">
+          <input type="text" name="apellido_mF" class="form-control">
         </div>
 
         <div class="mb-3">
-          <label for="titulo" class="form-label">Numero de Expediente:</label>
-          <input type="text" name="numExp" class="form-control">
+          <label for="titulo" class="form-label">Número de Expediente:</label>
+          <input type="number" name="num_expF" class="form-control">
         </div>
 
         <div class="mb-3">
           <label for="titulo" class="form-label">Puesto:</label>
-          <input type="text" name="puesto" class="form-control">
-        </div>
-
-        <div class="mb-3">
-          <label for="titulo" class="form-label">Tipo de Contrato:</label>
-          <input type="text" name="tipoC" class="form-control">
+          <input type="text" name="puestoF" class="form-control">
         </div>
 
         <div class="mb-3">
           <label>Fecha de Nacimiento:</label>
-            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-              <input type="text" name="fechNac" class="form-control datetimepicker-input"/>
-                <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                  </div>
-                </div>
+          <div class="input-group date" id="reservationdate" data-target-input="nearest">
+            <input type="text" name="fecha_nacimientoF" class="form-control datetimepicker-input" />
+            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
         </div>
-        
-          <div class="mb-3">
-           <label>Nacionalidad:</label>
-              <select name="nacionalidad" class="custom-select form-control-border" id="exampleSelectBorder">
-                <option value="Mexicana">Mexicana</option>
-                <option value="Estadounidense">Estadounidense</option>
-                <option value="Otra...">Otra...</option>
-              </select>
-          </div>
 
-          <div class="mb-3">
-           <label>Sexo:</label>
-              <select name="sexo" class="custom-select form-control-border" id="exampleSelectBorder">
-                <option value="Femenino">Femenino</option>
-                <option value="Masculino">Masculino</option>
-                <option value="No especificar">No especificar</option>
-              </select>
-          </div>
-
-          <div class="mb-3">
-            <label for="titulo" class="form-label">CURP:</label>
-            <input type="text" name="curp" class="form-control">
-          </div>
-
-          <div class="mb-3">
-            <label for="titulo" class="form-label">NSS:</label>
-            <input type="text" name="nss" class="form-control">
-          </div>
-
-          <div class="mb-3">
-            <label for="titulo" class="form-label">RFC:</label>
-            <input type="text" name="rfc" class="form-control">
-          </div>
-
-          <div class="mb-3">
-            <label for="titulo" class="form-label">Homoclave RFC:</label>
-            <input type="text" name="H_rfc" class="form-control">
-          </div>
-
-          <div class="mb-3">
-            <label for="titulo" class="form-label">Telefono celular*:</label>
-            <input type="text" name="tel" class="form-control">
-          </div>
-
-          <div class="mb-3">
-            <label for="titulo" class="form-label">Correo institucional*:</label>
-            <input type="text" name="correo" class="form-control">
-          </div>
-
-
-          <button type="submit" name="registrarDatos" class="btn btn-primary"><i class="fas fa-cog"></i> Guardar
-            Registro</button>
-
-            
-
+        <div class="mb-3">
+          <label>Sexo:</label>
+          <select name="sexoF" class="custom-select form-control-border" id="exampleSelectBorder">
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+            <option value="No especificar">No especificar</option>
+          </select>
         </div>
-      </form>
+
+        <div class="mb-3">
+          <label>Tipo de contrato:</label>
+          <select name="tipo_contratoF" class="custom-select form-control-border" id="exampleSelectBorder">
+            <option value="Honorarios">Honorarios</option>
+            <option value="Confianza">Confianza</option>
+            <option value="Funcionario público">Funcionario público</option>
+            <option value="Otra...">Otra...</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label>Nacionalidad:</label>
+          <select name="nacionalidadF" class="custom-select form-control-border" id="exampleSelectBorder">
+            <option value="Mexicana">Mexicana</option>
+            <option value="Extranjera">Extranjera</option>
+            <option value="Otra...">Otra...</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">CURP:</label>
+          <input type="text" name="curpF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Número de Seguridad Social:</label>
+          <input type="number" name="nssF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">RFC:</label>
+          <input type="text" name="rfcF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Homoclave RFC:</label>
+          <input type="text" name="homoclaveF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Teléfono celular:</label>
+          <input type="number" name="telefonoF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Correo institucional:</label>
+          <input type="text" name="correo_instF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Cédula profesional:</label>
+          <input type="text" name="cedula_profF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Cartilla militar:</label>
+          <input type="text" name="cartilla_militarF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Pasaporte:</label>
+          <input type="text" name="pasaporteF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Licencia de manejo:</label>
+          <input type="text" name="licencia_manejoF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label>Estado civil:</label>
+          <select name="estado_civilF" class="custom-select form-control-border" id="exampleSelectBorder">
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Union libre">Unión libre</option>
+            <option value="Concubinato">Concubinato</option>
+            <option value="Divorciado">Divorciado</option>
+            <option value="Viudo">Viudo</option>
+            <option value="otro">otro</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Teléfono de casa:</label>
+          <input type="number" name="tel_casaF" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Correo personal:</label>
+          <input type="text" name="correo_perF" class="form-control">
+        </div>
+
+        <button type="submit" name="registrarDatos" class="btn btn-primary"><i class="fas fa-cog"></i> Guardar Registro</button>
+
+
+
     </div>
+    </form>
   </div>
+</div>
 </div>
 <!-- /.card-body -->
 <!-- jQuery -->
@@ -270,18 +330,18 @@
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+  $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+          theme: 'bootstrap4'
+        })
 
-    //Date picker
-    $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
+        //Date picker
+        $('#reservationdate').datetimepicker({
+          format: 'L'
+        });
 </script>
 <?php include "includes/footer.php" ?>

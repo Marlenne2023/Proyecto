@@ -5,7 +5,7 @@
     $id= $_GET['id'];
   }
 
-  //Obtener los datos de la nota por su id
+  //Obtener los datos del dependienre por id del empleado
   $query = "SELECT * FROM dependientes WHERE id=:id";
   $stmt = $conn->prepare($query);
 
@@ -14,22 +14,27 @@
   $stmt->bindParam(":id", $id, PDO::PARAM_INT);
   $stmt->execute();
 
+
+// Obtiene el resultado de la ejecucion(stmt)
   $registro = $stmt->fetch(PDO::FETCH_OBJ);
 
-  //eliminacion de la nota
+  //si da clic en el botn borrar_dependiente entra
   if(isset($_POST["borrar_dependiente"])){
 
 
-      //Cambiamos la consulta a una eliminación
+      //declara la consulta
       $query = "DELETE dependientes  WHERE id=:id";
 
-    //   preparar y ejecutar la consulta
+    //   prepara la consulta
       $stmt = $conn->prepare($query); 
 
+      // Obtiene parametro id 
       $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 
+      //ejecuta la consulta y lo alamacena en la variable resultado
       $resultado = $stmt->execute();
 
+// Si la consulta es exitosa arroja mensaje 
       if ($resultado) {
         $mensaje = "Dependiente eliminado correctamente";
       }else{
@@ -72,7 +77,7 @@
               <div class="card-header">               
                 <div class="row">
                   <div class="col-md-9">
-                    <h3 class="card-title">Agregar nuevo dependiente economico</h3>
+                    <h3 class="card-title">Eliminar dependiente economico</h3>
                   </div>                 
               </div>
               </div>

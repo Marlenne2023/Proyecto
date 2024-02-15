@@ -1,12 +1,14 @@
 <?php include "includes/header.php" ?>
 <?php
-  //Validar si recibimos el id, se envía por GET
+  //cuando el boton este pesionado va atraer los datos almacenados en el id
   if (isset($_GET["id"])) {
     $id= $_GET['id'];
   }
 
-  //Obtener los datos de la nota por su id
+  //declarar la consulta
   $query = "SELECT * FROM dependientes WHERE id=:id";
+
+// se prepara la consulta
   $stmt = $conn->prepare($query);
 
   //Debemos pasar a bindParam las variables, no podemos pasar el dato directamente
@@ -16,7 +18,7 @@
 
   $registro = $stmt->fetch(PDO::FETCH_OBJ);
 
-  //Actualización de la nota
+  //Cuando el boton se presiona va a actualizar los datos
   if(isset($_POST["editar_dependiente"])){
 
     //Obtener valores
@@ -49,9 +51,9 @@
       $resultado = $stmt->execute();
 
       if ($resultado) {
-        $mensaje = "Dependiente editado correctamente";
+        $mensaje = "Dependiente actualizado correctamente";
       }else{
-        $error = "Error, no se pudo editar al dependiente";  
+        $error = "Error, no se pudo actualizar al dependiente";  
       }
     }
   }

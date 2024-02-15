@@ -41,8 +41,9 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_OBJ); //Extrae los datos de la consulta
                 </tr>
             </thead>
             <tbody>
-            
-                <?php foreach ($usuarios as $fila) : ?> //Ciclo para imprimir los datos
+
+            <!-- //Ciclo para imprimir los datos -->
+                <?php foreach ($usuarios as $fila) : ?> 
                     <tr>
                         <td><?php echo $fila->id; ?></td>
                         <td><?php echo $fila->nombre; ?></td>

@@ -87,7 +87,7 @@ if (isset($_POST["ingresar"])) {
   <!-- header inner -->
 
   <header>
-    <h1>Sistema de Expediente Digital de Empleados <img src="images/logo.png" alt="Logo DIF" style="width: 250px; height: 75px;float: right;" /></h1>
+    <h1>Sistema de Expediente Digital de Empleados <img src="images/logo.png" alt="Logo DIF" style="width: 200px; height: 75px;float: right;" /></h1>
   </header>
 
 </head>
@@ -110,7 +110,7 @@ if (isset($_POST["ingresar"])) {
   <div class="container-fluid">
     <div class="row no-gutter">
       <!-- The image half -->
-      <div class="col-md-6 d-none d-md-flex bg-image"></div>
+      <div class="col-md-6 d-none d-md-flex bg-image" ></div>
 
 
       <!-- The content half -->
@@ -118,27 +118,28 @@ if (isset($_POST["ingresar"])) {
         <div class="login d-flex align-items-center py-5">
 
           <!-- Demo content-->
-          <div class="card"  style="width: 350px; height: 400px; ">
-            <div class="container" >
+          <div class="card" style="width: 350px; height: 460px; ">
+            <div class="container">
               <div class="row">
                 <div class="col-lg-10 col-xl-7 mx-auto">
                   <div class="text-center mb-4">
+                    <br>
                     <a href="#!">
-                      <img src="./images/iconoDIF.ico" alt="LOGO_  DIF" width="57" height="57">
+                      <img src="./images/hidalgo-02.png" alt="LOGO_ DIF" width="200" height="120" position: fixed;>
                     </a>
                   </div>
-                  <h3 class="display-4">SEDE</h3>
-                  <p class="text-muted mb-4">Iniciar sesión</p>
                   <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST">
+                    <p><i class='far fa-user' style='font-size:20px'></i> Corrreo electrónico</p>
                     <div class="form-group mb-3">
-                      <input type="email" class="form-control" name="email" placeholder="Ingresa el email">
+                      <input type="email" class="form-control" name="email" placeholder="Ingresa correo electrónico">
                     </div>
+                    <p><i class='fas fa-unlock-alt' style='font-size:20px'></i> Contraseña</p>
                     <div class="form-group mb-3">
-                      <input type="password" class="form-control" name="password" placeholder="Ingresa el password">
+                      <input type="password" class="form-control" name="password" placeholder="Ingresa contraseña">
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-12">
-                      <button type="submit" name="ingresar" class="btn btn-primary d-block w-100" style="background-color: #BC955B; border-color: #BC955B;"><i class="fas fa-user"></i> Ingresar</button>
+                      <button type="submit" name="ingresar" class="btn btn-primary d-block w-100" style="background-color: #BC955B; border-color: #BC955B;">Iniciar sesión</button>
 
                     </div>
                   </form>
